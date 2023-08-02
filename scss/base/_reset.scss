@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: "Cutive Mono", monospace;
+  font-weight: 400;
+  font-size: 15px;
+  background: rgb(245, 173, 146);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 173, 146, 1) 0%,
+    rgba(118, 94, 141, 1) 35%,
+    rgba(0, 87, 127, 1) 100%
+  );
+}
+main {
+  flex-grow: 1;
+}
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+li {
+  text-decoration: none;
+}
