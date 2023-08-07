@@ -69,3 +69,42 @@ body#bg {
   font-weight: bold;
   color: #fff;
 }
+
+.pokemon__inner {
+  margin-top: 70px;
+}
+.pokemon__search {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.pokemon__input {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.095);
+  border: 1px solid transparent;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: #fff;
+  }
+}
+.pokemon__btn {
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background-color: rgba(255, 255, 255, 0.095);
+  transition: all 0.5s ease;
+  &:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.595);
+  }
+}

@@ -1,4 +1,5 @@
 let elList = document.querySelector(".pokemon__list");
+let elSearch = document.querySelector(".pokemon__input");
 
 const renderPokemon = function (array) {
   array.forEach((element) => {
@@ -44,3 +45,15 @@ const renderPokemon = function (array) {
 };
 
 renderPokemon(pokemons);
+
+elSearch.addEventListener("keyup", function () {
+  elList.innerHTML = "";
+  const searchValue = elSearch.value.trim().toLowerCase();
+
+  let result = pokemons.filter(function (element) {
+    let searchName = element.name.toLowerCase();
+    return searchName.includes(searchValue);
+  });
+
+  renderPokemon(result);
+});
