@@ -6,22 +6,27 @@ const btnRec = document.querySelector(".rec");
 
 let todos = [
   {
+    id: 1,
     title: "Wake up early",
     time: "06:00",
   },
   {
+    id: 2,
     title: "Morning workout",
     time: "06:30",
   },
   {
+    id: 3,
     title: "Take a shower",
     time: "07:00",
   },
   {
+    id: 4,
     title: "Breakfast",
     time: "07:30",
   },
   {
+    id: 5,
     title: "Go to work",
     time: "08:00",
   },
@@ -30,10 +35,14 @@ let todos = [
 const renderToDos = function (array) {
   elList.innerHTML = "";
   array.forEach(function (item, index, array) {
+    // console.log(item);
     // li va 2 ta p ni yasab oldik
     let liElement = document.createElement("li");
     let titleElement = document.createElement("p");
     let timeElement = document.createElement("p");
+    let divElement = document.createElement("div");
+    let delElelement = document.createElement("img");
+    let editElement = document.createElement("img");
 
     // li ning classListiga .lis__item nomli class qoshdik
     liElement.classList.add("list__item");
@@ -46,9 +55,30 @@ const renderToDos = function (array) {
     timeElement.textContent = item.time;
     timeElement.classList.add("item-time");
 
+    divElement.classList.add("item__wrapper");
+
+    editElement.classList.add("item__edit");
+    editElement.setAttribute(
+      "src",
+      "https://www.svgrepo.com/show/474041/edit.svg",
+    );
+    editElement.dataset.id = item.id;
+
+    delElelement.classList.add("item__del");
+    delElelement.setAttribute(
+      "src",
+      "https://www.svgrepo.com/show/499905/delete.svg",
+    );
+    delElelement.dataset.id = item.id;
+
+    divElement.append(timeElement, editElement, delElelement);
+    liElement.append(divElement);
+
     // hamma yaratib olingan elementlarni ichma ich tartiblab oldik
     liElement.appendChild(titleElement);
-    liElement.appendChild(timeElement);
+    liElement.append(divElement);
+
+    // liElement.appendChild(timeElement);
 
     // Htmlda turgan ul ga birlashtirib olgan elementimizni qoshdik
     elList.appendChild(liElement);
@@ -64,11 +94,12 @@ elForm.addEventListener("submit", function (e) {
   console.log(inputValue, inputValueTime);
 
   let new_obj = {
+    id: todos.length ? todos.length + 1 : 1,
     title: inputValue,
     time: inputValueTime,
   };
 
-  todos.unshift(new_obj);
+  todos.push(new_obj);
   renderToDos(todos);
 });
 
@@ -94,23 +125,29 @@ btnRec.addEventListener("click", function () {
   };
 });
 
-// const record = new webkitSpeechRecognition();
+elList.addEventListener("click", function (e) {
+  if (e.target.matches(".item__del")) {
+    const deleteId = e.target.dataset.id;
+    const foundObject = todos.findIndex((item) => {
+      return (item.id = deleteId);
+    });
+    todos.splice(foundObject, 1);
+    renderToDos(todos);
+  }
 
-// elRecord.addEventListener("click", function () {
-//   record.start();
+  if (e.target.matches(".item__edit")) {
+    let text = prompt("Edit content");
+    let time = prompt("Edit time");
 
-//   record.onresult = function (e) {
-//     const content = e.results[0][0].transcript;
-//     console.log(content);
+    const edit = e.target.dataset.id;
 
-//     const d = Math.floor(Math.random() * 10);
+    const foundItem = todos.find((element) => {
+      return element.id == edit;
+    });
 
-//     let nlist = {
-//       count: `${d}`,
-//       title: content,
-//     };
-//     list.unshift(nlist);
-//     renderList(list);
-//     console.log(list);
-//   };
-// });
+    foundItem.title = text;
+    foundItem.time = time;
+
+    renderToDos(todos);
+  }
+});
