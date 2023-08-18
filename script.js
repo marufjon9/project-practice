@@ -2,6 +2,7 @@ let elForm = document.querySelector(".form");
 let elInput = document.querySelector(".form-input");
 let elInputTime = document.querySelector(".form-time");
 let elList = document.querySelector(".list");
+const btnRec = document.querySelector(".rec");
 
 let todos = [
   {
@@ -70,3 +71,46 @@ elForm.addEventListener("submit", function (e) {
   todos.unshift(new_obj);
   renderToDos(todos);
 });
+
+const record = new webkitSpeechRecognition();
+
+btnRec.addEventListener("click", function () {
+  record.start();
+
+  record.onresult = function (e) {
+    const recording = e.results[0][0].transcript;
+    console.log(recording);
+
+    const time = new Date();
+    const hour = time.getHours();
+    const minute = time.getMinutes();
+
+    let new_todos = {
+      title: recording,
+      time: `${hour}:${minute}`,
+    };
+    todos.unshift(new_todos);
+    renderToDos(todos);
+  };
+});
+
+// const record = new webkitSpeechRecognition();
+
+// elRecord.addEventListener("click", function () {
+//   record.start();
+
+//   record.onresult = function (e) {
+//     const content = e.results[0][0].transcript;
+//     console.log(content);
+
+//     const d = Math.floor(Math.random() * 10);
+
+//     let nlist = {
+//       count: `${d}`,
+//       title: content,
+//     };
+//     list.unshift(nlist);
+//     renderList(list);
+//     console.log(list);
+//   };
+// });
