@@ -6,6 +6,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
       rel="stylesheet"
     />
@@ -21,58 +25,56 @@
           </a>
           <div class="pokemon__inner">
             <form class="pokemon__search">
-              <input class="pokemon__input" required placeholder="Search ..."></input>
-              <button class="pokemon__btn " type="submit">Search</button>
+              <input class="pokemon__input" required placeholder="Search ..." />
+              <button class="pokemon__btn" type="submit">Search</button>
             </form>
           </div>
-
         </div>
         <div class="pokemon__bottom">
-          <ul class="pokemon__list">
-            <!-- <li class="pokemon__item item">
-              <img src="img/Pokemon.png" alt="pokemon" class="item__img" />
-              <p class="item__weight">Weight</p>
-              <p class="item__height">Height</p>
-              <p class="item__egg">Egg</p>
-              <p class="item__spawn">Spawn time</p>
-              <p class="item__name">Name</p>
-            </li>
-            <li class="pokemon__item item">
-              <img src="img/Pokemon.png" alt="pokemon" class="item__img" />
-              <p class="item__weight">Weight</p>
-              <p class="item__height">Height</p>
-              <p class="item__egg">Egg</p>
-              <p class="item__spawn">Spawn time</p>
-              <p class="item__name">Name</p>
-            </li>
-            <li class="pokemon__item item">
-              <img src="img/Pokemon.png" alt="pokemon" class="item__img" />
-              <p class="item__weight">Weight</p>
-              <p class="item__height">Height</p>
-              <p class="item__egg">Egg</p>
-              <p class="item__spawn">Spawn time</p>
-              <p class="item__name">Name</p>
-            </li>
-            <li class="pokemon__item item">
-              <img src="img/Pokemon.png" alt="pokemon" class="item__img" />
-              <p class="item__weight">Weight</p>
-              <p class="item__height">Height</p>
-              <p class="item__egg">Egg</p>
-              <p class="item__spawn">Spawn time</p>
-              <p class="item__name">Name</p>
-            </li>
-            <li class="pokemon__item item">
-              <img src="img/Pokemon.png" alt="pokemon" class="item__img" />
-              <p class="item__weight">Weight</p>
-              <p class="item__height">Height</p>
-              <p class="item__egg">Egg</p>
-              <p class="item__spawn">Spawn time</p>
-              <p class="item__name">Name</p>
-            </li> -->
-          </ul>
+          <ul class="pokemon__list"></ul>
         </div>
       </div>
     </div>
+
+    <!-- Modal  -->
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-body second">...</div>
+          <div class="modal-body egg">...</div>
+          <div class="modal-body spawn">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="pokemons.js"></script>
     <script src="main.js"></script>
   </body>

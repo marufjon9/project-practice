@@ -12,6 +12,14 @@ const renderPokemon = function (array) {
     let spawnElement = document.createElement("p");
     let nameElement = document.createElement("p");
 
+    let btnMore = document.createElement("button");
+    btnMore.classList.add("btnmore", "modal-btn");
+    btnMore.textContent = "More info";
+    btnMore.setAttribute("type", "button");
+    btnMore.setAttribute("data-bs-toggle", "modal");
+    btnMore.setAttribute("data-bs-target", "#exampleModal");
+    btnMore.dataset.id = element.id;
+
     liElement.classList.add("pokemon__item");
 
     imgElement.setAttribute("src", element.img);
@@ -33,12 +41,14 @@ const renderPokemon = function (array) {
     nameElement.textContent = element.name;
     nameElement.classList.add("item__name");
 
-    liElement.appendChild(imgElement);
-    liElement.appendChild(weightElement);
-    liElement.appendChild(heightElement);
-    liElement.appendChild(eggElement);
-    liElement.appendChild(spawnElement);
-    liElement.appendChild(nameElement);
+    // liElement.appendChild(imgElement);
+    // liElement.appendChild(weightElement);
+    // liElement.appendChild(heightElement);
+    // liElement.appendChild(eggElement);
+    // liElement.appendChild(spawnElement);
+    // liElement.appendChild(nameElement);
+
+    liElement.append(imgElement, nameElement, btnMore);
 
     elList.appendChild(liElement);
   });
@@ -56,4 +66,23 @@ elSearch.addEventListener("keyup", function () {
   });
 
   renderPokemon(result);
+});
+
+const modalTitle = document.querySelector(".modal-title");
+const modalBody = document.querySelector(".modal-body");
+const modalBtn = document.querySelector(".modal-btn");
+const modalHeight = document.querySelector(".second");
+const modalegg = document.querySelector(".egg");
+const modalSpawn = document.querySelector(".spawn");
+
+elList.addEventListener("click", function (e) {
+  if (e.target.matches(".modal-btn")) {
+    const btnId = e.target.dataset.id;
+    const found = pokemons.find((item) => (item.id = btnId));
+    modalTitle.textContent = `Name: ${found.name}`;
+    modalBody.textContent = `Weight: ${found.weight}`;
+    modalHeight.textContent = `Height: ${found.height}`;
+    modalegg.textContent = `Egg: ${found.egg}`;
+    modalSpawn.textContent = `Spawn time: ${found.spawn_time}`;
+  }
 });
