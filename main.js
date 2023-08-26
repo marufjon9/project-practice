@@ -26,20 +26,20 @@ const renderPokemon = function (array) {
     imgElement.setAttribute("alt", element.name);
     imgElement.classList.add("item__img");
 
-    weightElement.textContent = `Weight: ${element.weight}`;
-    weightElement.classList.add("item__weight");
+    // weightElement.textContent = `Weight: ${element.weight}`;
+    // weightElement.classList.add("item__weight");
 
-    heightElement.textContent = `Height: ${element.height}`;
-    heightElement.classList.add("item__height");
+    // heightElement.textContent = `Height: ${element.height}`;
+    // heightElement.classList.add("item__height");
 
-    eggElement.textContent = `Egg: ${element.egg}`;
-    eggElement.classList.add("item__egg");
+    // eggElement.textContent = `Egg: ${element.egg}`;
+    // eggElement.classList.add("item__egg");
 
-    spawnElement.textContent = `Spawn time: ${element.spawn_time}`;
-    spawnElement.classList.add("item__spawn");
+    // spawnElement.textContent = `Spawn time: ${element.spawn_time}`;
+    // spawnElement.classList.add("item__spawn");
 
-    nameElement.textContent = element.name;
-    nameElement.classList.add("item__name");
+    // nameElement.textContent = element.name;
+    // nameElement.classList.add("item__name");
 
     // liElement.appendChild(imgElement);
     // liElement.appendChild(weightElement);
@@ -78,7 +78,10 @@ const modalSpawn = document.querySelector(".spawn");
 elList.addEventListener("click", function (e) {
   if (e.target.matches(".modal-btn")) {
     const btnId = e.target.dataset.id;
-    const found = pokemons.find((item) => (item.id = btnId));
+    console.log(btnId);
+    const found = pokemons.find((item) => item.id == btnId);
+    console.log(found);
+
     modalTitle.textContent = `Name: ${found.name}`;
     modalBody.textContent = `Weight: ${found.weight}`;
     modalHeight.textContent = `Height: ${found.height}`;
