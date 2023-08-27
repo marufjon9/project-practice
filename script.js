@@ -35,8 +35,6 @@ let todos = [
 const renderToDos = function (array) {
   elList.innerHTML = "";
   array.forEach(function (item, index, array) {
-    // console.log(item);
-    // li va 2 ta p ni yasab oldik
     let liElement = document.createElement("li");
     let titleElement = document.createElement("p");
     let timeElement = document.createElement("p");
@@ -117,11 +115,13 @@ btnRec.addEventListener("click", function () {
     const minute = time.getMinutes();
 
     let new_todos = {
+      id: todos.length ? todos.length + 1 : 1,
       title: recording,
       time: `${hour}:${minute}`,
     };
     todos.unshift(new_todos);
     renderToDos(todos);
+    console.log(todos);
   };
 });
 
